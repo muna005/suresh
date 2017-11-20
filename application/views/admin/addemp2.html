@@ -1,0 +1,131 @@
+<div>
+    <div ng-include="'views/header.html'"></div>
+          <div class="container-fluid container-margin">
+             <div class="row row-height">
+                <div class="col-md-3" style="margin-right:0px;padding-right:0px;background-color:#f8f8f8;">
+                    <div ng-include="'views/menubar.html'"> </div>     
+                </div>
+                <div class="col-md-8" style='background-color:#f8f8f8'>
+                   <div class="row">
+                      <div class="col-md-12" >
+                         
+                         <div class="col-md-12">
+                            <h4 class ="head_gst"> Add Employee  Detail</h4>
+                            <div class="row div-minheight">
+                            <div class="col-lg-12 cart-box div-minheight">
+                            <form method='POST' enctype="multipart/form-data" name="empForm" novalidate> 
+                                <div class="alert alert-success fade in" ng-if="sussmsg">
+                                                                 Employees    Detail Added successfully.
+                                </div>
+                               <div class="form-group" ng-class="{ 'has-error': empForm.first_name.$invalid && !empForm.first_name.$pristine }">
+                                  <label>First Name <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                     <input type="text" class="form-control" ng-model="emp.first_name" name="first_name"  placeholder="First Name" required>
+                                     
+                                  </div>
+                                   <p ng-show="empForm.first_name.$invalid && !empForm.first_name.$pristine" style='color:red'> Enter First Name .</p>
+                               </div>
+                               <div class="form-group"  ng-class="{ 'has-error': empForm.last_name.$invalid && !empForm.last_name.$pristine }">
+                                  <label>Last Name <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                     <input type="text" class="form-control" ng-model="emp.last_name"  name="last_name"  placeholder="Last Name" required>
+                                  </div>
+                                  <p ng-show="empForm.last_name.$invalid && !empForm.last_name.$pristine" style='color:red'> Enter Last Name .</p>
+                               </div>
+                               <div class="form-group" ng-class="{ 'has-error': empForm.emp_id.$invalid && !empForm.emp_id.$pristine }">
+                                  <label>Emp Id <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                     <input type="text" class="form-control"  ng-model="emp.emp_id"  name="emp_id" id="Email" placeholder="Emp Id" required >
+                                  </div>
+                                  <p ng-show="empForm.emp_id.$invalid && !empForm.emp_id.$pristine" style='color:red'> Enter Employee Id .</p>
+                               </div>
+                                <div class="form-group" ng-class="{ 'has-error': empForm.email.$invalid && !empForm.email.$pristine }">
+                                  <label>Email Id <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                     <input type="email" class="form-control" ng-model="emp.email"  name="email" id="Email" placeholder="Email" required >
+                                  </div>
+                                 
+                                   <p ng-show="empForm.email.$error.required && !empForm.email.$pristine" style='color:red'> Enter Email Id .</p>
+                                    <p ng-show="empForm.email.$error.email && !empForm.email.$pristine" style='color:red'> Enter Valid  Email Id .</p>
+                                   
+                                   
+                               </div>
+                               <div class="form-group" ng-class="{ 'has-error': empForm.mobile.$invalid && !empForm.mobile.$pristine }">
+                                  <label>Mobile Number <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"  ></i></span>
+                                     <input type="number" ng-pattern="/(7|8|9)\d{9}/"  class="form-control" ng-model="emp.mobile"  name="mobile"  placeholder="Mobile number" required>
+                                  </div>
+                                 <p ng-show="empForm.mobile.$error.required  && !empForm.mobile.$pristine" style='color:red'> Enter   Mobile Number .</p>
+                                  <p ng-show="empForm.mobile.$error.pattern && !empForm.mobile.$pristine" style='color:red'> Enter  Valid Mobile Number .</p>
+                               </div>
+                               <div class="form-group" ng-class="{ 'has-error': empForm.gender.$invalid && !empForm.gender.$pristine }">
+                                  <label> Gender <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <select name='gender' class="form-control" ng-model="emp.gender" required >
+                                        <option value=''>select</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>         
+                                  </div>
+                                   <p ng-show="empForm.gender.$invalid && !empForm.gender.$pristine" style='color:red'> Select Gender .</p>
+                               </div>
+                               
+                               <div class="form-group"  ng-class="{'has-error': empForm.dob.$invalid && !empForm.dob.$pristine }">
+                                  <label>Date Of Birth <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                   <input type="date" class="form-control" ng-model="emp.dob"  class="form-control" name="dob" id="dob" placeholder="dob" required >         
+                                  </div>
+                                   <p ng-show="empForm.dob.$invalid && !empForm.dob.$pristine" style='color:red'> Enter Date Of Birth .</p>
+                               </div>
+                               <div class="form-group"  ng-class="{'has-error': empForm.platform.$invalid && !empForm.dob.$pristine }">
+                                  <label>Platform <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                    <select name='platform' class="form-control" name='platform' ng-model="emp.platform" required >
+                                        <option value=''>select</option>
+                                        <option>Php</option>
+                                        <option>Javascript</option>
+                                        <option>UI</option>
+                                    </select>         
+                                  </div>
+                                   <p ng-show="empForm.platform.$invalid && !empForm.platform.$pristine" style='color:red'> Select Platform .</p>
+                               </div>
+                                <div class="form-group" ng-class="{'has-error': empForm.blood_grp.$invalid && !empForm.blood_grp.$pristine }">
+                                  <label>Blood Group <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                    <select name='blood_grp' class="form-control" ng-model="emp.blood_grp" required >
+                                        <option value=''>select</option>
+                                        <option>O +ve</option>
+                                        <option>A +ve</option>
+                                        <option>B +ve</option>
+                                    </select>         
+                                  </div>
+                                   <p ng-show="empForm.blood_grp.$invalid && !empForm.blood_grp.$pristine" style='color:red'> Select blood Group .</p>
+                               </div>
+                               <div class="form-group" ng-class="{'has-error': empForm.date_join.$invalid && !empForm.date_join.$pristine }">
+                                  <label>Date Of Join <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                   <input type="text" class="form-control" ng-model="emp.date_join"   name="date_join"  placeholder="join date" required >         
+                                  </div>
+                                  <p ng-show="empForm.date_join.$invalid && !empForm.date_join.$pristine" style='color:red'> Select date of join .</p>
+                               </div>
+                               <div class="form-group">
+                                  <label>Image <span class='start'>*</span> </label>
+                                  <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                   <input type="file" class="form-control" onchange="angular.element(this).scope().uploadedFile(this)">  
+                                   <br/>
+	                               <img ng-src="{{image_source}}" style="width:200px;">
+                                  </div>
+                               </div>
+                               <input type="submit" ng-disabled="empForm.$invalid" name="submit" ng-click="submit()"  id="submit" value="Submit" class="btn btn-primary pull-left" style='margin-bottom:100px'>
+                            </form>
+                            </div>
+                        </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+    
+          </div>
+        <div ng-include="'views/footer.html'"></div>
+</div>        
