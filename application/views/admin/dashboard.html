@@ -1,0 +1,75 @@
+<div>
+    <div ng-include="'views/header.html'"></div>
+        <div class="container-fluid container-margin">
+         <div class="row row-height">
+            <div class="col-md-3" style="margin-right:0px;padding-right:0px;background-color:#f8f8f8;">
+                <div ng-include="'views/menubar.html'"> </div>     
+            </div>
+            <div class="col-md-8" style='background-color:#f8f8f8'>
+               <div class="row">
+                  <div class="col-md-12" >
+                     
+                        <h4 class ="head_gst"></h4>
+                        <div class="row">
+                             
+                        <div class="col-lg-12 cart-box" style='min-height:570px;'>
+                            
+                            <div class='col-md-4'>
+                                <div class="circle"> 
+                                    <span class="innerTEXT"> Total  Employee  <span class='numspan'> {{totalEmp}} </span></span>
+                                </div>
+                            </div>
+                            <div class='col-md-4'>
+                                <div class="circle"> 
+                                    <span class="innerTEXT"> Active Employee  <span class='numspan'> {{activeemp}}   </span> </span>
+                                </div>
+                            </div>
+                            
+                            <div class='col-md-4'>
+                                <div class="circle"> 
+                                    <span class="innerTEXT"> Old Employee  <span class='numspan'> {{disActiveEmp}}  </span> </span>
+                                </div>
+                            </div>
+                       </div>
+                     </div>
+                  
+               </div>
+            </div>
+         </div>
+        
+        </div>
+        <div ng-include="'views/footer.html'"></div>
+        </div>    
+
+</div>
+<style>
+.circle {
+    background:#679fc8;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    color:black;
+    text-align:center;
+    border: solid 3px white;
+    font-family:Segoe UI Light;
+    box-shadow:0px 0px 5px black;
+  cursor:pointer;
+}
+.circle .innerTEXT{
+  position:relative;
+  top:40px;
+  left:-2px;
+  color:white;
+  font-weight: bold;
+  text-shadow:2px 2px 2px black;
+}
+.footer
+{
+position: absolute; 
+}
+.numspan
+{
+display:block;    
+font-size:24px;    
+}
+</style>
