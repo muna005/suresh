@@ -47,10 +47,12 @@ class Admin extends CI_Controller {
 	public function userList()
 	{
 	     if(@$this->session->userdata(isUserLoggedIn)) {
-	         	$this->load->view('admin/view-user');
+				$row = $this->Adminmodel->getAllrecords();				
+				$data['result'] = $row ;	
+	         	$this->load->view('admin/view-user',$data);
 	    }
 	    else{
-	        redirect('admin');    
+	       redirect('admin');    
 	     }
 	}
 	public function productDetail()
@@ -67,11 +69,91 @@ class Admin extends CI_Controller {
     	$this->load->view('admin/view-query');
 	}
 	public function addArticle(){
+		$title    = $this->input->post('title');
+		$detail   = $this->input->post('detail');
+		$today_date = date('Y-m-d H:i:s') ;
+		$author   = $this->input->post('author');
+		$created_by = 'admin' ;
+		$date = $this->input->post('exp_date');
+		$exp_datetype = new DateTime($date);
+		$exp_date = $exp_datetype->format('Y-m-d H:i:s') ;
+
+		if($title!=''){
+			$data = array(
+					"title" => $title ,
+					"article_desc" => $detail ,
+					"created_by"   => $created_by ,
+					"created_date" => $today_date ,
+					"author"       => $author ,
+					"exp_date"     => $exp_date
+			);
+			$result = $this->Adminmodel->insertArticle($data);
+			if($result){
+				$this->session->set_flashdata("msg","Article sussfully Inserted");
+			}
+			else{
+			   $this->session->set_flashdata("msg","please enter correct data");
+			}
+		}
     	$this->load->view('admin/add-article');
 	}
 	public function viewArticle(){
-    	$this->load->view('admin/view-article');
+		$result = $this->Adminmodel->getArticle();
+		$data['result'] = $result!=0?$result:null ;
+		$this->load->view('admin/view-article',$data);
+		
 	}
+	public function editArticle(){
+		echo $article_id = $this->uri->segment('3');
+		echo $id = $this->input->post('id');
+		if($article_id=='')
+		{
+			$article_id =$id ;
+		}
+		if($article_id!=''){
+		$result = $this->Adminmodel->getArticle($article_id);
+		$data['result'] = $result ;
+		$title    = $this->input->post('title');
+			if($title!=''){
+				$detail   = $this->input->post('detail');
+				$today_date = date('Y-m-d H:i:s') ;
+				$author   = $this->input->post('author');
+				$created_by = 'admin' ;
+				$date = $this->input->post('exp_date');
+				$exp_datetype = new DateTime($date);
+				$exp_date = $exp_datetype->format('Y-m-d H:i:s') ;
+				$data = array(
+						"title" => $title ,
+						"article_desc" => $detail ,
+						"created_by"   => $created_by ,
+						"created_date" => $today_date ,
+						"author"       => $author ,
+						"exp_date"     => $exp_date
+				);
+				$result = $this->Adminmodel->updateArticle($article_id,$data);
+				if($result){
+					$this->session->set_flashdata("msg","Article sussfully Updated");
+				}
+				else{
+				$this->session->set_flashdata("msg","please enter correct data");
+				}
+				$url="admin/editArticle/".$article_id;
+				redirect($url);
+				
+			}
+			else
+			{
+			$this->load->view("admin/edit-article",$data);	
+			}
+
+	}
+	else
+	{
+		$this->output->set_status_header('404'); 
+        $data['content'] = 'error_404'; // View name 
+        $this->load->view('admin',$data);//loading in my template 
+	}
+}
 	public function addService(){
 	    $this->load->view('admin/add-service');
 	}

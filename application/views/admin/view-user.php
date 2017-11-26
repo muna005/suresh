@@ -25,23 +25,32 @@ include'header.php';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>  
-                                        <td>Sudhakar Nayak</td>
-                                        <td>sudha@gmail.com </td>
-                                        <td>74168574</td>  
-                                        <td>male</td> 
-                                        <td>07-05-90</td> 
-                                        <td>
-                                           <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
-                                                <li> <a><i class="fa fa-pencil"></i></a> </li> 
-                                                <li> <a><i class="fa fa-eye"></i></a> </li> 
-                                                <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
-                                                <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
-                                            </ul>					
-                                        </td>
-                                    </tr>
-                                     
+                                    <?php
+                                    if(count($result) > 0)
+                                    {
+                                        $index=0;
+                                        foreach($result as $row)
+                                        $index++;
+                                    ?>  
+                                        <tr>
+                                            <td><?php echo $index ; ?></td>  
+                                            <td><?php echo $row->fname ?> &nbsp;&nbsp; <?php echo $row->lname ?></td>
+                                            <td><?php echo $row->email ?> </td>
+                                            <td><?php echo $row->mobile ?></td>  
+                                            <td><?php echo $row->gender ?></td> 
+                                            <td><?php echo $row->date_of_birth; ?></td> 
+                                            <td>
+                                            <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+                                                    <li> <a><i class="fa fa-pencil"></i></a> </li> 
+                                                    <li> <a><i class="fa fa-eye"></i></a> </li> 
+                                                    <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
+                                                    <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
+                                                </ul>					
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>     
                                   </tbody>
                             </table>
                         </div> 

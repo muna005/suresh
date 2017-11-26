@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://vklps.com/suresh/assets/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://vklps.com/suresh/assets/css/form-elements.css">
         <link rel="stylesheet" href="https://vklps.com/suresh/assets/css/style.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
   <!-- Fixed navbar -->
