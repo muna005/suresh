@@ -12,6 +12,9 @@ include'header.php';
                         <div class="col-lg-12 cart-box div-minheight">
                             
                          <div class="table-responsive">
+                            <?php
+                            echo $this->session->flashdata('msg');
+                            ?>
                             <table class="table table-bordered gst-tbl">
                                 <thead>
                                     <tr class='tbl-th'>
@@ -23,22 +26,36 @@ include'header.php';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>  
-                                        <td>himalaya sampoo</td>
-                                        <td>SKU-5241 </td>
-                                        <td>Rs.524</td>                                
-                                        <td>
-                                           <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
-                                                <li> <a><i class="fa fa-pencil"></i></a> </li> 
-                                                <li> <a><i class="fa fa-eye"></i></a> </li> 
-                                                <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
-                                                <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
-                                            </ul>					
-                                        </td>
-                                        
-                                    </tr>
-                                     
+                                    <?php
+                                
+                                    $count =count(array_filter((array)$result));            
+                                    if($count > 0) {
+                                        $i=0;
+                                        foreach($result as $row) {
+                                        $i++;    
+                                    ?>
+                                            <tr>
+                                                <td><?php echo $i; ?></td>  
+                                                <td><?php echo $row->product_name; ?></td>
+                                                <td><?php echo $row->product_code; ?> </td>
+                                                <td><i class='fa fa-inr'></i><?php echo $row->price; ?></td>                                
+                                                <td>
+                                                <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+                                                <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+                                                <li> <a href="<?php echo base_url() ?>admin/editProduct/<?php echo  $row->id; ?>"><i class="fa fa-pencil"></i></a> </li>                                                     
+                                                <li> <a onclick="return confirm('Are you sure to delete this product ?')" href="<?php echo base_url() ?>admin/deleteProduct/<?php echo $row->id ; ?>" style='cursor:pointer'> <i class="fa fa-times" aria-hidden="true"></i></a></li> 
+                                            </ul>
+                                                    </ul>					
+                                                </td>
+                                                
+                                            </tr>
+                                    <?php
+                                        }
+                                    } 
+                                    else{
+                                        echo"<tr><td colspan='5'>no records Found</td></tr>";
+                                    }
+                                    ?>
                                   </tbody>
                             </table>
                         </div> 

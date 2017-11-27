@@ -1,53 +1,4 @@
-<!--
-<div class="list-group">
-    <a   class="list-group-item" style="background-color:#3b434a!important;color:#f8f8f8"> <span>&nbsp;</span>
-    </a>
-     <a  href="#" class="list-group-item"> 
-        <i class="fa fa-compass" aria-hidden="true"></i> 
-         Dashboard 
-    </a>
-    <ul  class="list-group-item" data-toggle="collapse" data-target="#demo"> 
-        
-       <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-         User's List
-        <li class="list-group-item">
-            <a  class="list-group-item">
-             <i class="fa fa-user-circle-o" aria-hidden="true"></i> Query
-            </a>    
-        </li> 
-        <li class="list-group-item">
-            <a  class="list-group-item">
-             <i class="fa fa-user-circle-o" aria-hidden="true"></i> Query
-            </a>    
-        </li> 
-         
-    </ul>
-   
-    <a  class="list-group-item">
-         <i class="fa fa-user-circle-o" aria-hidden="true"></i> Query
-    </a>
-    <a  class="list-group-item">
-         <i class="fa fa-user-circle-o" aria-hidden="true"></i>Article's 
-    </a>
-    <a  class="list-group-item">
-       <i class="fa fa-user-circle-o" aria-hidden="true"></i> Service's
-    </a>
-     <a  class="list-group-item">
-       <i class="fa fa-user-circle-o" aria-hidden="true"></i> Products's
-    </a>
-    <a  class="list-group-item">
-       <i class="fa fa-user-circle-o" aria-hidden="true"></i> Orders's
-    </a>
-     <a  class="list-group-item">
-       <i class="fa fa-user-circle-o" aria-hidden="true"></i> Gallery
-    </a>
-    <a ui-sref-active="active"   ui-sref="logout" class="list-group-item">
-         <span class="glyphicon glyphicon-link" aria-hidden="true"></span> Logout
-    </a>
-   
-</div>
 
--->
 	<div id="left" class="span3">
          <ul id="left" class="nav menu">  
                         <li class="item-1 deeper parent active">
@@ -91,13 +42,14 @@
                                 <span class="lbl">Manage Query</span>                      
                             </a>
                             <ul class="children nav-child unstyled small collapse" id="sub-item-02">
-                                <li class="item-2 deeper parent active">
+                               <!-- <li class="item-2 deeper parent active">
                                     <a class="" href="<?php echo base_url() ?>addquery">
                                         <span data-toggle="collapse" data-parent="#menu-group-2" href="#sub-item-02" class="sign"><i class="fa fa-minus"></i></span>
                                         <span class="lbl">Add Query</span> 
                                     </a>
                                    
                                 </li>
+                                -->
                                 <li class="item-2 deeper parent active">
                                     <a class="" href="<?php echo base_url() ?>query">
                                         <span data-toggle="collapse" data-parent="#menu-group-2" href="#sub-item-03" class="sign"><i class="fa fa-minus"></i></span>
@@ -203,11 +155,19 @@
                         
                         <li class="item-12 deeper parent">
                             <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-66" href="#sub-item-066" class="sign"><i class="fa fa-plus" aria-hidden="true"></i>
+                                <span data-toggle="collapse" data-parent="#menu-group-66" href="#sub-item-66" class="sign"><i class="fa fa-plus" aria-hidden="true"></i>
 </span>
                                 <span class="lbl">Manage Gallery's</span>                      
                             </a>
-                            <ul class="children nav-child unstyled small collapse" id="sub-item-066">
+                            <ul class="children nav-child unstyled small collapse" id="sub-item-66">
+                            <li class="item-19 deeper parent ">
+                                    <a class="" href="<?php echo base_url() ?>admin/addGallery">
+                                        <span data-toggle="collapse" data-parent="#menu-group-66" href="#sub-item-067" class="sign"><i class="fa fa-minus"></i></span>
+                                        <span class="lbl">Add Gallery's</span> 
+                                    </a>
+                                   
+                                </li>
+                                 
                                  <li class="item-11 deeper parent ">
                                     <a class="" href="<?php echo base_url() ?>gallery">
                                         <span data-toggle="collapse" data-parent="#menu-group-66" href="#sub-item-066" class="sign"><i class="fa fa-minus"></i></span>

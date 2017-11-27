@@ -17,20 +17,20 @@ include_once'header.php';
                                 <div class="form-group">
                                   <label>Title <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <input type='text' value="<?php echo $result[0]->title ?>"  class="form-control" name='title' >
+                                     <input required='true' title='please Enter Title' type='text' value="<?php echo $result[0]->title ?>"  class="form-control" name='title' >
                                   </div>
                                </div>
                                 <div class="form-group">
                                   <label>Detail <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <textarea  class="form-control ckeditor" name='detail' ><?php echo $result[0]->article_desc ?> </textarea>
+                                     <textarea  required='true' title='please Enter Detail'   class="form-control ckeditor" name='detail' ><?php echo $result[0]->article_desc ?> </textarea>
                                   </div>
                                </div>
                                <div class="form-group">
                                   <label>Author <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                  
-                                     <select name='author' class="form-control" required='true'>
+                                     <select  required='true' title='please Enter Author'  name='author' class="form-control" required='true'>
                                       <option <?php echo  $result[0]->author=='sudha'?'selected ':'' ?>>sudha</option>
                                       <option <?php echo  $result[0]->author=='suresh'?'selected':'' ?>>suresh </option>
                                      </select>
@@ -39,7 +39,7 @@ include_once'header.php';
                                <div class="form-group">
                                   <label>Expire Date <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <input type='text' value="<?php echo $result[0]->exp_date ?>" id="datepicker-inline"  class="form-control" name='exp_date' required="true" >
+                                     <input type='text'  required='true' title='please Enter Expire date' value="<?php echo $result[0]->exp_date ?>" id="datepicker-inline"  class="form-control" name='exp_date' required="true" >
                                   </div>
                                </div>
                                <center>

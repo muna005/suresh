@@ -38,6 +38,44 @@
 
 }(window.jQuery);
         </script>
+		
+		<script>
+  $(function() {
+	$(".image").change(function() 
+		{
+		var val = $(this).val();
+		switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+		case 'jpeg': case 'jpg': case 'png': case 'gif':
+
+		break;
+		default:
+		$(this).val('');
+		// error message here
+			 alert('Please uploads only jpg,png,jpeg,gif,files');
+		break;
+		}
+});
+
+$(".image2").change(function() 
+{
+		var val2 = $(this).val();
+		var val22 = val2.substring(val2.lastIndexOf('.') + 1).toLowerCase();
+		switch(val22){
+		case 'mp4': case 'flv': case 'mp3': case 'avi':
+
+		break;
+		default:
+		$(this).val('');
+		// error message here
+			 alert('Please uploads only avi,mp3,flv,flv');
+		break;
+		}
+		
+});
+  });
+</script>
+
+
     </body>
 
 </html>

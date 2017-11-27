@@ -24,22 +24,39 @@ include'header.php';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td> 
-                                        <td>gal2</td>
-                                        <td>sampleimg.jpg</td>
-                                        <td>sample.mp4</td> 
-                                        <td>
-                                           <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
-                                                <li> <a><i class="fa fa-pencil"></i></a> </li> 
-                                                <li> <a><i class="fa fa-eye"></i></a> </li> 
-                                                <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
-                                                <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
-                                            </ul>					
-                                        </td>
-                                        
-                                    </tr>
-                                     
+                                    <?php
+                                    $count = count(array_filter((array)$result) > 0) ;
+                                    if($count > 0) {
+                                        $i=0;
+                                        foreach($result as $row){
+                                            $i++;
+                                        ?>
+                                   
+                                            <tr>
+                                                <td><?php echo $i; ?></td> 
+                                                <td><?php echo $row->title; ?></td>
+                                                <td><img src='./uploads/<?php echo $row->image; ?>' width='75' height='75'></td>
+                                                <td>
+                                              
+                                                    <video width="200" height="150" controls>
+                                                    <source src='./uploads/<?php echo $row->image; ?>' type="video/mp4">
+                                                    <source src='./uploads/<?php echo $row->video; ?>' type="video/ogg">
+                                                    Your browser does not support the video tag.
+                                                    </video>
+                                                
+                                                </td>
+                                                <td>
+                                                <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+                                                        <li> <a><i class="fa fa-pencil"></i></a> </li> 
+                                                        <li> <a href="<?php echo base_url() ?>/admin/deleteGallery/<?php echo $row->id ;?>" style='cursor:pointer'><i class="fa fa-times"></i></a></li> 
+                                                    </ul>					
+                                                </td>
+                                                
+                                            </tr>
+                                    <?php        
+                                        }
+                                    }
+                                    ?>
                                   </tbody>
                             </table>
                         </div> 

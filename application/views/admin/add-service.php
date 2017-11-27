@@ -10,28 +10,32 @@ include_once'header.php';
                             <h4 class ="head_gst"> Add Service </h4>
                             <div class="row div-minheight">
                             <div class="col-lg-12 cart-box div-minheight">
-                            <form method='POST' enctype="multipart/form-data" name="empForm" novalidate> 
-                                <div class="alert alert-success fade in" ng-if="sussmsg">
-                                                                    successfully.
-                                </div> 
+                            <form method='POST' enctype="multipart/form-data" name="empForm" action='<?php echo base_url() ?>/addservice'> 
+                                <?php
+                                echo $this->session->flashdata('msg');
+                                ?>
                                 <div class="form-group">
-                                  <label>Offer <span class='start'>*</span> </label>
+                                  <label>Name <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <input type='text'  class="form-control" name='offer' >
+                                     <input type='text'  class="form-control" name='service_name' >
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                  <label>Coupon <span class='start'>*</span> </label>
+                                  <label>Duration <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <input type='text'  class="form-control" name='coupon' >
+                                     <select name="duration" class='form-control'>
+                                     <option value='15min'>15 min</option>
+                                      <option value='1hr'>1 hr</option>
+                                      <option value='2hr'>2 hr</option>
+                                     </select>
                                   </div>
                                </div>
-                                 <div class="form-group">
-                                  <label>Expire Date <span class='start'>*</span> </label>
+                               <div class="form-group">
+                                  <label>Price <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                                     <input type='text'  class="form-control datepicker-inline" name='coupon' >
+                                     <input type='number'  class="form-control" name='price' >
                                   </div>
-                               </div>
+                                </div> 
                                <center>
                                 <input ng-if="submitbtn" type="submit"  name="submit"   id="submit" value="Submit" class="btn btn-primary pull-center" style='margin-bottom:100px'>
                                </center>

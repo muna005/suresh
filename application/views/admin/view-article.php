@@ -13,9 +13,9 @@ include'header.php';
                         <div class="col-lg-12 cart-box div-minheight">
                             
                          <div class="table-responsive">
-                         <?php
-                        print_r($result);
-                         ?>
+                            <?php
+                            echo $this->session->flashdata('msg');
+                            ?>
                             <table class="table table-bordered gst-tbl">
                                 <thead>
                                     <tr class='tbl-th'>
@@ -30,7 +30,8 @@ include'header.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if(count($result> 0)){
+                                     $count =count(array_filter((array)$result));            
+                                     if($count > 0) {
                                         $index = 0 ;
                                         foreach($result as $row) {
                                             $index++ ;
@@ -45,10 +46,21 @@ include'header.php';
                                          <td><?php echo $row->exp_date ; ?></td>
                                         <td>
                                            <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
-                                                <li> <a href="<?php echo base_url() ?>admin/editArticle/<?php echo  $row->id; ?>"><i class="fa fa-pencil"></i></a> </li> 
-                                                <li> <a><i class="fa fa-eye"></i></a> </li> 
-                                                <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
-                                                <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
+                                                <li> <a href="<?php echo base_url() ?>admin/editArticle/<?php echo  $row->id; ?>"><i class="fa fa-pencil"></i></a> </li>         
+                                                <?php
+                                                if($row->status==0){
+                                                ?>
+                                                <li > <a style='cursor:pointer' href="<?php echo base_url() ?>/admin/changeStatus/<?php echo $row->id ; ?>" >  <i class="fa fa-check-circle"></i> </a></li> 
+                                                <?php
+                                                }
+                                                else {
+                                                ?>
+                                                <li > <a style='cursor:pointer' href="<?php echo base_url() ?>/admin/changeStatus/<?php echo $row->id ; ?>" >  <i class="fa fa-trash-o"></i> </a></li> 
+                                                <?php    
+                                                }
+                                                ?>
+                                               
+                                                <li> <a onclick="return confirm('Are you sure to delete this article ?')" href="<?php echo base_url() ?>admin/deleteArticle/<?php echo $row->id ; ?>" style='cursor:pointer'> <i class="fa fa-times" aria-hidden="true"></i></a></li> 
                                             </ul>					
                                         </td>
                                         

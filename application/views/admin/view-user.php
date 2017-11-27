@@ -6,7 +6,7 @@ include'header.php';
                <div class="row ">
                   <div class="col-md-12" >
                      <div class="col-md-12">
-                        <h4 class ="head_gst">Product Detail</h4>
+                        <h4 class ="head_gst">User's List</h4>
                         <div class="row div-minheight">
                             
                         <div class="col-lg-12 cart-box div-minheight">
@@ -26,8 +26,10 @@ include'header.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if(count($result) > 0)
-                                    {
+                                   
+                                  
+                                    $count =count(array_filter((array)$result));            
+                                    if($count > 0) {
                                         $index=0;
                                         foreach($result as $row)
                                         $index++;
@@ -41,10 +43,9 @@ include'header.php';
                                             <td><?php echo $row->date_of_birth; ?></td> 
                                             <td>
                                             <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
-                                                    <li> <a><i class="fa fa-pencil"></i></a> </li> 
+                                                   
                                                     <li> <a><i class="fa fa-eye"></i></a> </li> 
-                                                    <li > <a style='cursor:pointer'  > <i class="fa fa-check" aria-hidden="true"></i></a></li> 
-                                                    <li> <a style='cursor:pointer'><i class="fa fa-trash"></i></a></li> 
+                                                    <li> <a onclick="confirm('are you sure to delete ??')" href="<?php echo base_url() ?>/admin/deleteUser/<?php echo $row->id ?>" style='cursor:pointer'><i class="fa fa-times"></i></a></li> 
                                                 </ul>					
                                             </td>
                                         </tr>
