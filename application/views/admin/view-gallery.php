@@ -17,15 +17,15 @@ include'header.php';
                                 <thead>
                                     <tr class='tbl-th'>
                                         <th><center>Sno</center></th>
-                                        <th><center><a>name</a></center></th>
-                                        <th><center>image</center></th>
-                                        <th><center>video</center></th>
+                                        <th><center>Name</center></th>
+                                        <th><center>Media Type</center></th>
+                                        <th><center>Media</center></th>
                                         <th><center>Action</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $count = count(array_filter((array)$result) > 0) ;
+                                    $count = count(array_filter((array)$result));
                                     if($count > 0) {
                                         $i=0;
                                         foreach($result as $row){
@@ -35,20 +35,32 @@ include'header.php';
                                             <tr>
                                                 <td><?php echo $i; ?></td> 
                                                 <td><?php echo $row->title; ?></td>
-                                                <td><img src='./uploads/<?php echo $row->image; ?>' width='75' height='75'></td>
                                                 <td>
-                                              
-                                                    <video width="200" height="150" controls>
-                                                    <source src='./uploads/<?php echo $row->image; ?>' type="video/mp4">
-                                                    <source src='./uploads/<?php echo $row->video; ?>' type="video/ogg">
-                                                    Your browser does not support the video tag.
-                                                    </video>
-                                                
+                                                <?php echo $row->gallery_type==1?'image':'video' ?>
                                                 </td>
+                                                <?php
+                                                if($row->gallery_type==1){
+                                                ?>
+                                                    <td><img src='./uploads/image/<?php echo $row->media; ?>' width='75' height='75'></td>
+                                                <?php
+                                                }
+                                                if($row->gallery_type==2){
+                                                ?>
+                                                    <td>                                              
+                                                        <video width="200" height="150" controls>
+                                                        <source src='./uploads/video/<?php echo $row->media; ?>' type="video/mp4">
+                                                        <source src='./uploads/video/<?php echo $row->mdeia; ?>' type="video/ogg">
+                                                        Your browser does not support the video tag.
+                                                        </video>
+                                                    
+                                                    </td>
+                                                <?php
+                                                }
+                                                ?>
                                                 <td>
                                                 <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
                                                         <li> <a><i class="fa fa-pencil"></i></a> </li> 
-                                                        <li> <a href="<?php echo base_url() ?>/admin/deleteGallery/<?php echo $row->id ;?>" style='cursor:pointer'><i class="fa fa-times"></i></a></li> 
+                                                        <li> <a  onclick="return confirm('Are you sure to delete ?')" href="<?php echo base_url() ?>/admin/deleteGallery/<?php echo $row->id ;?>" style='cursor:pointer'><i class="fa fa-times"></i></a></li> 
                                                     </ul>					
                                                 </td>
                                                 

@@ -368,31 +368,28 @@ class Admin extends CI_Controller {
 	public function addGallery(){
 
 		$title = $this->input->post('title');
+		$gallery_type = $this->input->post('gallery_type');
         if($title!=''){
-			$config_video['upload_path']          = './uploads';
-			$config_video['allowed_types'] = 'gif|jpg|png|mp4|avi|flv|wmv|mpeg|mp3';	
-			$config_video['max_size']	= '1000000000000000'; // whatever you need
-			$this->load->library('upload',$config_video);
+            if($gallery_type==1){
+				$config_media['upload_path'] = './uploads/image';
+			}
+			if($gallery_type==2){
+				$config_media['upload_path'] = './uploads/video';
+			}
+			
+			$config_media['allowed_types'] = 'gif|jpg|png|mp4|avi|flv|wmv|mpeg|mp3';	
+			$config_media['max_size']	= '1000000000000000'; // whatever you need
+			$this->load->library('upload',$config_media);
 			$error = [];
-			if (!$this->upload->do_upload('video'))
-			{
-				$error[] = array('error_video' => $this->upload->display_errors());	
-			}
-			else
-			{				   
-				$data[] = array('upload_video' => $this->upload->data());
-					
-			}
 			if ( ! $this->upload->do_upload('image'))
 			{
 				$error[] = array('error_image' => $this->upload->display_errors());	
 			}
 			else
 			{
-				$data[] = array('upload_video' => $this->upload->data());
+				$data[] = array('upload_image' => $this->upload->data());
 			}		
-			$image    = $data[1]['upload_video']['file_name'];
-			$video    = $data[0]['upload_video']['file_name'];
+			$image    = $data[0]['upload_image']['file_name'];
 			$added_by = 'admin';
 			$date     = date("Y-m-d H:i:s");
 			$gallery_desc= $this->input->post('gallery_desc');
@@ -404,8 +401,8 @@ class Admin extends CI_Controller {
 			else{
 				$data = array(
 					  'title'        => $title ,
-					  'image'        => $image ,
-					  'video'        => $video ,
+					  'gallery_type' => $gallery_type,
+					  'media'        => $image,
 					  'added_by'     => $added_by ,
 					  'add_date'     => $date,
 					  'gallery_desc' => $gallery_desc

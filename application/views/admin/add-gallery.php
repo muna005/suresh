@@ -22,21 +22,23 @@ include_once'header.php';
                                   </div>
                                </div>
                                <div class="form-group">
-                                  <label>image<span class='start'>*</span> </label>
+                                  <label>Image Type <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                     <input type="file" class="form-control image"   name="image"  placeholder="image" required>
+                                     <select name='gallery_type' class='form-control' id='galtype' required>
+                                      <option value=''> select media type </option>
+                                      <option value='1'> image </option>
+                                      <option value='2'> video </option>
+                                     </select>
                                   </div>
-                                  
                                </div>
                                <div class="form-group">
-                                  <label>video <span class='start'>*</span> </label>
+                                  <label>Media File<span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                     <input  type="file" class="form-control image2"    name="video" placeholder="video" required >
-                                  </div>
+                                     <input type="file" class="form-control image"   name="image"  placeholder="Media File" required>
+                                  </div> 
                                </div>
-                               
                                 <div class="form-group">
-                                  <label>detail <span class='start'>*</span> </label>
+                                  <label>Detail <span class='start'>*</span> </label>
                                   <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                      <textarea  class="form-control" name='gallery_desc' ></textarea>
                                   </div>

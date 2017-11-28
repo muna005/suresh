@@ -16,6 +16,7 @@ include'header.php';
                                 <thead>
                                     <tr class='tbl-th'>
                                         <th><center>Sno</center></th>
+                                        <th><center>Username</center></th>                                      
                                         <th><center><a>Name</a></center></th>
                                         <th><center>email</center></th>
                                         <th><center>Mobile</center></th>
@@ -35,7 +36,8 @@ include'header.php';
                                         $index++;
                                     ?>  
                                         <tr>
-                                            <td><?php echo $index ; ?></td>  
+                                            <td><?php echo $index ; ?></td> 
+                                            <td><?php echo $row->username ; ?></td> 
                                             <td><?php echo $row->fname ?> &nbsp;&nbsp; <?php echo $row->lname ?></td>
                                             <td><?php echo $row->email ?> </td>
                                             <td><?php echo $row->mobile ?></td>  

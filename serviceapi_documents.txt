@@ -1,0 +1,68 @@
+REST  SERVICE LIST
+
+1)login service
+---------------------
+url                         :   http://localhost/sureshcode/index.php/api/Myservice/loginUser
+method                      :   post
+request parameter's         :   username , password
+request parameter's example :  {
+								"username" :"sudha005",
+								"password" :"12345"
+							   }  							   
+response                    :   {
+									"status": "Success",
+									"responseCode": [
+										"100"
+									],
+									"message": [
+										"login success"
+									],
+									"userDetail": {
+										"id": "2",
+										"username": "sudha005",
+										"fname": "sudha",
+										"lname": "nayak",
+										"email": "sudha@gmail.com",
+										"mobile": "741684204",
+										"password": "12345",
+										"gender": "male",
+										"date_of_birth": "1990-11-09 00:00:00",
+										"date_join": "2017-11-15 00:00:00",
+										"status": "0",
+										"last_login": "2017-11-23 00:00:00"
+									}
+								}
+
+2) Userlist service
+---------------------
+url                         :   http://localhost/sureshcode/index.php/api/Myservice/viewUser
+method                      :   get
+request parameter           :   --							   
+response   exaples          :   {
+									"status": "Success",
+									"responseCode": [
+										"1000"
+									],
+									"message": [
+										"Users Detail  Retrieved Successfully."
+									],
+									"userDetail": [
+										{
+											"id": "2",
+											"username": "sudha005",
+											"fname": "sudha",
+											"lname": "nayak",
+											"email": "sudha@gmail.com",
+											"mobile": "741684204",
+											"password": "12345",
+											"gender": "male",
+											"date_of_birth": "1990-11-09 00:00:00",
+											"date_join": "2017-11-15 00:00:00",
+											"status": "0",
+											"last_login": "2017-11-23 00:00:00"
+										}
+									]
+								}
+                        
+
+

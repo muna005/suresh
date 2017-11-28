@@ -21,6 +21,24 @@ class Adminmodel extends CI_Model{
         }
         
     }
+    function userLogin($where){
+        $username = $where['0'];
+        $password = $where['1'];
+        $where = "password='$password' AND username='$username' OR email='$username'";
+        $this->db->where($where); // $where is an array of condtions .
+        $query =$this->db->get('user');
+        $rows=$query->num_rows();
+        if($rows>0)
+        {
+          return $query->result_array();   
+           
+        }   
+        else
+        {
+            return false;
+        }
+        
+    }
     //get all records from user table
     function getAllrecords(){
         $count = $this->db->count_all_results('user');
@@ -31,6 +49,18 @@ class Adminmodel extends CI_Model{
         }
         else{
            return '0' ;  
+        }
+
+    }
+    // for user register
+    public function regUser($data){
+        $result = $this->db->insert('user',$data);
+        if($result){
+            $id = $this->db->insert_id();
+            return $id ;
+        }
+        else{
+            return false;
         }
 
     }
@@ -298,14 +328,29 @@ class Adminmodel extends CI_Model{
 
     }
     public function delGallery($id){
-        $this->db->where('id',$id);
-        $result = $this->db->delete('gallery');
-        if($result){
-            return true ;
-        } 
-        else{
-            return false;
-        }
+       
+            $this->db->select('*');
+            $this->db->where('id',$id);
+            $query = $this->db->get('gallery');
+            $row  = $query->row_array();
+            $file         = $row['media'];
+            $gallery_type = $row['gallery_type'];
+            $url= FCPATH;
+            if($gallery_type==1){
+
+                unlink($url."/uploads/image/".$file);
+            }
+            if($gallery_type==2){
+                unlink($url."/uploads/video/".$file);               
+            }
+            $this->db->where('id',$id);
+            $result = $this->db->delete('gallery');
+            if($result){
+                return true ;
+            }
+            else{
+                return false;
+            }
     }
 }
 ?>
